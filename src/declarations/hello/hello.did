@@ -1,6 +1,7 @@
 service : {
-  checkBalace: () -> (float64) query;
+  checkBalace: () -> (float64);
   compound: () -> () oneway;
-  topUp: (float64) -> (float64) query;
-  withDraw: (float64) -> (float64) query;
+  demo: () -> (float64);
+  topUp: (float64) -> (float64);
+  withDraw: (float64) -> (float64);
 }

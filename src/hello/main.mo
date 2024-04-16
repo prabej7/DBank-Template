@@ -7,13 +7,13 @@ actor DBank {
   stable var currentValue: Float = 300;
   stable var startTime = Time.now();
   startTime := Time.now();
-  public query func topUp(amount : Float) : async Float {
+  public  func topUp(amount : Float) : async Float {
     currentValue += amount;
     Debug.print(debug_show (currentValue));
     return currentValue;
   };
 
-  public query func withDraw(amount : Float) : async Float {
+  public func withDraw(amount : Float) : async Float {
     if (amount > currentValue) {
       Debug.print("No enough balance.");
     } else {
@@ -23,7 +23,7 @@ actor DBank {
     return currentValue;
   };
 
-  public query func checkBalace() : async Float {
+  public func checkBalace() : async Float {
     return currentValue;
   };
 
@@ -31,6 +31,11 @@ actor DBank {
     let elapsedTime = (Time.now() - startTime)/1000000000;
     currentValue := currentValue*(1.01**Float.fromInt(elapsedTime));
     startTime := Time.now();
+  };
+
+  public func demo(): async Float{
+    return currentValue;
   }
+
 
 };

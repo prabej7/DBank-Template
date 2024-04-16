@@ -17919,10 +17919,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const idlFactory = ({ IDL }) => {
   return IDL.Service({
-    'checkBalace' : IDL.Func([], [IDL.Float64], ['query']),
+    'checkBalace' : IDL.Func([], [IDL.Float64], []),
     'compound' : IDL.Func([], [], ['oneway']),
-    'topUp' : IDL.Func([IDL.Float64], [IDL.Float64], ['query']),
-    'withDraw' : IDL.Func([IDL.Float64], [IDL.Float64], ['query']),
+    'demo' : IDL.Func([], [IDL.Float64], []),
+    'topUp' : IDL.Func([IDL.Float64], [IDL.Float64], []),
+    'withDraw' : IDL.Func([IDL.Float64], [IDL.Float64], []),
   });
 };
 const init = ({ IDL }) => { return []; };
@@ -21213,23 +21214,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _declarations_hello__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../declarations/hello */ "./src/declarations/hello/index.js");
 
 
-document.querySelector("form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const button = e.target.querySelector("button");
-
-  const name = document.getElementById("name").value.toString();
-
-  button.setAttribute("disabled", true);
-
-  // Interact with foo actor, calling the greet method
-  const greeting = await _declarations_hello__WEBPACK_IMPORTED_MODULE_0__.hello.greet(name);
-
-  button.removeAttribute("disabled");
-
-  document.getElementById("greeting").innerText = greeting;
-
-  return false;
+window.addEventListener("load", async() => {
+    document.getElementById("value").innerText = "loading.."
+    const currentAmount = await _declarations_hello__WEBPACK_IMPORTED_MODULE_0__.hello.checkBalace();
+    document.getElementById("value").innerText = currentAmount;
 });
+
+let btn = document.getElementById("submit-btn");
+document.querySelector("form").addEventListener("submit",async(e)=>{
+    e.preventDefault();
+    let inputAmount = parseFloat(document.getElementById("input-amount").value);
+    let widthDrawl = parseFloat(document.getElementById("withdrawal-amount").value);
+    btn.setAttribute("disabled",true);
+    await _declarations_hello__WEBPACK_IMPORTED_MODULE_0__.hello.topUp(inputAmount);
+    btn.removeAttribute("disabled",false);
+    window.location.reload();
+})
+
 
 })();
 

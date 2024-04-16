@@ -1,9 +1,10 @@
 export const idlFactory = ({ IDL }) => {
   return IDL.Service({
-    'checkBalace' : IDL.Func([], [IDL.Float64], ['query']),
+    'checkBalace' : IDL.Func([], [IDL.Float64], []),
     'compound' : IDL.Func([], [], ['oneway']),
-    'topUp' : IDL.Func([IDL.Float64], [IDL.Float64], ['query']),
-    'withDraw' : IDL.Func([IDL.Float64], [IDL.Float64], ['query']),
+    'demo' : IDL.Func([], [IDL.Float64], []),
+    'topUp' : IDL.Func([IDL.Float64], [IDL.Float64], []),
+    'withDraw' : IDL.Func([IDL.Float64], [IDL.Float64], []),
   });
 };
 export const init = ({ IDL }) => { return []; };
